@@ -44,4 +44,4 @@
 
     - name: Validar {{javavglvfs.split(',')[0]|trim}}
       become: true
-      shell: vgs "{{devnull}}" --units g | tr -s ' ' , | cut -d, -f2 | grep | |grep "{{vgnm}}"
+      shell: vgs {{devnull}} --units g | tr -s ' ' , | cut -d, -f2 | grep | |grep "{{vgnm}}"
