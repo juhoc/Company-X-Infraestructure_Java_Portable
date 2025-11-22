@@ -45,4 +45,4 @@
       become: true
       shell: vgs {{devnull}} --units g | tr -s ' ' , | cut -d, -f2 | grep {{vgnm}}
       register: rstlop
-      failed_when: rstlop.rc != [0, 1]
+      failed_when: rstlop.rc != [1, 2]
