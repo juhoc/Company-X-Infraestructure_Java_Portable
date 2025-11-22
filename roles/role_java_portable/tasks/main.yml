@@ -32,4 +32,4 @@
 
 - block:
     - debug:
-        msg: "{{javavglvfs|trim}}"
+        msg: "{{javavglvfs|trim|replace('\n','')}}"
