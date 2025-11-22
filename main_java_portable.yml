@@ -16,4 +16,4 @@
 
   tasks:
     - include_role:
-        name: role_java_portabley
+        name: role_java_portable
