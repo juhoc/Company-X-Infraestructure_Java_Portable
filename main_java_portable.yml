@@ -16,4 +16,4 @@
 
   tasks:
     - include_role:
-        name: role_instalar_java_portable
+        name: role_instalar_java_portabley
