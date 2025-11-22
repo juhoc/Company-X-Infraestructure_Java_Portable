@@ -31,5 +31,5 @@
           {% endif %}
 
 - block:
-    - debub:
+    - debug:
         msg: "{{javavglvfs|trim}}"
