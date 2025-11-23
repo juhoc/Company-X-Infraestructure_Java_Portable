@@ -53,7 +53,7 @@
       failed_when: rstlopvg.rc not in [0, 1]
 
     - set_fact:
-        vgconf: "{{rstlopvg.stdout|default('no_fs_faund')}}"
+        vgconf: "{{rstlopvg.stdout|default('no_fs_faund')|trim}}"
 
     - set_fact:
         javavglvfs: |
