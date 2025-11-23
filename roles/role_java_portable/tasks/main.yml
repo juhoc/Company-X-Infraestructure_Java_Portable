@@ -35,10 +35,10 @@
         msg: "{{javavglvfs|trim|replace('\n','')}}"
 
     - set_fact:
-        vgnm: "{{javavglvfs.split(',')[0]|trim}|default('no_vgs_faund')}"
-        lvnm: "{{javavglvfs.split(',')[1]|trim}|default('no_lv_found')}"
-        mpnm: "{{javavglvfs.split(',')[2]|trim}|default('no_fs_found')}"
-        mpsz: "{{javavglvfs.split(',')[3]|trim}|default('0')}"
+        vgnm: "{{javavglvfs.split(',')[0]|trim|default('no_vg_faund')}}"
+        lvnm: "{{javavglvfs.split(',')[1]|trim|default('no_lv_faund')}}"
+        mpnm: "{{javavglvfs.split(',')[2]|trim|default('no_fs_faund')}}"
+        mpsz: "{{javavglvfs.split(',')[3]|trim|default('0')}}"
 
     - name: Validar {{javavglvfs.split(',')[0]|trim}}
       become: true
