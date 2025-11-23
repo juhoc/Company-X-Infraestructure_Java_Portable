@@ -56,7 +56,7 @@
         vgconf: "{{rstlopvg.stdout|default('no_fs_faund')|trim}}"
 
     - set_fact:
-        javavglvfs: |
+        javavg: |
           {% if (vgconf == 'VGAPPS') %}
           "Validar LVJAVA_CTM"
           {% else %}
