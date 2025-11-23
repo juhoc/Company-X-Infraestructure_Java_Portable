@@ -58,7 +58,7 @@
     - set_fact:
         javavglvfs: |
           {% if (vgconf == 'VGAPPS') %}
-          "{{vgconf}}"
+          "Validar LVJAVA_CTM"
           {% else %}
-          "{{vgconf}}"
+          "Ejecutar Plantilla por API"
           {% endif %}
