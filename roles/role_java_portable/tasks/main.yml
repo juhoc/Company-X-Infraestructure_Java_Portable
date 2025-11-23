@@ -35,11 +35,16 @@
         msg: "{{javavglvfs|trim|replace('\n','')}}"
 
     - set_fact:
-        vgnm: "{{javavglvfs.split(',')[0]|trim}}"
-        lvnm: "{{javavglvfs.split(',')[1]|trim}}"
-        mpnm: "{{javavglvfs.split(',')[2]|trim}}"
-        mpsz: "{{javavglvfs.split(',')[3]|trim}}"
+        vgnm: "{{javavglvfs.split(',')[0]|trim}|default('no_vgs_faund')}"
+        lvnm: "{{javavglvfs.split(',')[1]|trim}|default('no_lv_found')}"
+        mpnm: "{{javavglvfs.split(',')[2]|trim}|default('no_fs_found')}"
+        mpsz: "{{javavglvfs.split(',')[3]|trim}|default('0')}"
 
+    - name: Validar {{javavglvfs.split(',')[0]|trim}}
+      become: true
+      shell: vgs {{devnull}} --units g | tr -s ' ' , | cut -d, -f2 | grep {{vgnm}}
+      register: rstlopvg
+      failed_when: rstlopvg.rc not in [0, 1]
 
     - name: Validar {{javavglvfs.split(',')[0]|trim}}
       become: true
