@@ -46,8 +46,13 @@
       register: rstlopvg
       failed_when: rstlopvg.rc not in [0, 1]
 
-    - name: Validar {{javavglvfs.split(',')[0]|trim}}
-      become: true
-      shell: vgs {{devnull}} --units g | tr -s ' ' , | cut -d, -f2 | grep {{vgnm}}
-      register: rstlop
-      failed_when: rstlop.rc not in [0, 1]
+    - set_fact:
+        vgconf: "{{rstlopvg.stdout|default('no_fs_faund')}}"
+
+    - set_fact:
+        javavglvfs: |
+          {% if (vgconf == 'VGAPPS') %}
+          "{{vgconf}}"
+          {% else %}
+          "{{vgconf}}"
+          {% endif %}
