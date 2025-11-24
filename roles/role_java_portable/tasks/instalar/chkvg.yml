@@ -24,7 +24,7 @@
 #         mpnm: "{{javavglvfs.split(',')[2]}}"
 #         mpsz: "{{javavglvfs.split(',')[3]}}"
 
-    - name: Validar {{javavglvfs.split(',')[0]|trim}}
+    - name: Validar el VG - {{javavglvfs.split(',')[0]|trim}}
       become: true
       shell: vgs {{devnull}} --units g | tr -s ' ' , | cut -d, -f2 | grep {{vgnm}}
       register: rstlopvg
@@ -34,9 +34,15 @@
         vgconf: "{{rstlopvg.stdout|default('no_vg_faund')|trim}}"
 
     - set_fact:
-        javavg: |
+        run_playbook: |
           {% if (vgconf == 'VGAPPS') %}
           ['instalar/chklv']
           {% else %}
           "Ejecutar Plantilla por API"
           {% endif %}
+
+    - name: Se encontrol {{javavglvfs.split(',')[0]|trim}} se ejecuta la tarea {{run_playbook}}
+      include_tasks: "{{ tareas1 }}.yml"
+      loop: "{{ run_playbook }}"
+      loop_control:
+        loop_var: tareas1

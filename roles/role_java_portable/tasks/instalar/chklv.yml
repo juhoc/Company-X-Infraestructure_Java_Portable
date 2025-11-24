@@ -34,9 +34,15 @@
         lvconf: "{{rstloplv.stdout|default('no_lv_faund')|trim}}"
 
     - set_fact:
-        javalv: |
+        run_playbook: |
           {% if (lvconf == 'LVJAVA_CTM') %}
           ['instalar/chklv']
           {% else %}
           "Ejecutar Plantilla por API"
           {% endif %}
+
+    - name: Se encontrol {{javavglvfs.split(',')[1]|trim}} se ejecuta la tarea {{run_playbook}}
+      include_tasks: "{{ tareas1 }}.yml"
+      loop: "{{ run_playbook }}"
+      loop_control:
+        loop_var: tareas2
