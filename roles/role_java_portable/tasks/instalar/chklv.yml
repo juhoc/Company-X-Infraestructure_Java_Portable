@@ -38,7 +38,7 @@
           {% if (lvconf == 'LVJAVA_CTM') %}
           ['instalar/chklv']
           {% else %}
-          ['llamar/api_crear_lv.yml']
+          ['llamar/api_crear_lv']
           {% endif %}
 
     - name: Se encontrol {{javavglvfs.split(',')[1]|trim}} se ejecuta la tarea {{run_playbook}}
