@@ -38,7 +38,7 @@
           {% if (lvconf == 'LVJAVA_CTM') %}
           ['instalar/chklv']
           {% else %}
-          "Ejecutar Plantilla por API"
+          ['llamar/api.yml']
           {% endif %}
 
     - name: Se encontrol {{javavglvfs.split(',')[1]|trim}} se ejecuta la tarea {{run_playbook}}
