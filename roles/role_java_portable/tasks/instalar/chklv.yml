@@ -36,7 +36,7 @@
     - set_fact:
         javavg: |
           {% if (lvconf == 'LVJAVA_CTM') %}
-          ['chklv']
+          ['instalar/chklv']
           {% else %}
           "Ejecutar Plantilla por API"
           {% endif %}
