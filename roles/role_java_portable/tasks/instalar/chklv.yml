@@ -24,18 +24,18 @@
 #         mpnm: "{{javavglvfs.split(',')[2]}}"
 #         mpsz: "{{javavglvfs.split(',')[3]}}"
 
-    - name: Validar {{javavglvfs.split(',')[0]|trim}}
+    - name: Validar {{javavglvfs.split(',')[1]|trim}}
       become: true
-      shell: vgnm {{devnull}} --units g | tr -s ' ' , | cut -d, -f2 | grep {{vgnm}}
-      register: rstlopvg
-      failed_when: rstlopvg.rc not in [0, 1]
+      shell: lvs {{devnull}} --units g | tr -s ' ' , | cut -d, -f2 | grep {{lvnm}}
+      register: rstloplv
+      failed_when: rstloplv.rc not in [0, 1]
 
     - set_fact:
-        vgconf: "{{rstlopvg.stdout|default('no_vg_faund')|trim}}"
+        lvconf: "{{rstloplv.stdout|default('no_lv_faund')|trim}}"
 
     - set_fact:
         javavg: |
-          {% if (vgconf == 'VGAPPS') %}
+          {% if (lvconf == 'LVJAVA_CTM') %}
           ['chklv']
           {% else %}
           "Ejecutar Plantilla por API"
