@@ -26,7 +26,7 @@
 
     - name: Validar {{javavglvfs.split(',')[0]|trim}}
       become: true
-      shell: vgnm {{devnull}} --units g | tr -s ' ' , | cut -d, -f2 | grep {{vgnm}}
+      shell: vgs {{devnull}} --units g | tr -s ' ' , | cut -d, -f2 | grep {{vgnm}}
       register: rstlopvg
       failed_when: rstlopvg.rc not in [0, 1]
 
