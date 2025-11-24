@@ -24,6 +24,7 @@
 #         mpnm: "{{javavglvfs.split(',')[2]}}"
 #         mpsz: "{{javavglvfs.split(',')[3]}}"
 
+- block:
     - name: Validar {{javavglvfs.split(',')[1]|trim}}
       become: true
       shell: lvs {{devnull}} --units g | tr -s ' ' , | cut -d, -f2 | grep {{lvnm}}

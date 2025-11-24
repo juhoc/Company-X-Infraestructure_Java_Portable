@@ -24,6 +24,7 @@
 #         mpnm: "{{javavglvfs.split(',')[2]}}"
 #         mpsz: "{{javavglvfs.split(',')[3]}}"
 
+- block:
     - name: Validar el VG - {{javavglvfs.split(',')[0]|trim}}
       become: true
       shell: vgs {{devnull}} --units g | tr -s ' ' , | cut -d, -f2 | grep {{vgnm}}
