@@ -1,11 +1,11 @@
 ---
-- name: Tareas por bloques - Validacion formato CRQ o ICR
+- name: Validacion formato CRQ o ICR
   block:
     - set_fact:
         idhelix: "{{ idcrqinc | trim }}"
       run_once: true
       delegate_to: localhost
-
+    
     - name: Validando Formato de Cambio o Incidente
       assert:
         that:
@@ -15,50 +15,46 @@
       run_once: true
       delegate_to: localhost
 
-- block:
+- name: Seleccion de tarea por el usuarios
+  block:
     - set_fact:
-        javavglvfs: |
-          {% if (javaop0 == 'Batch') and (javaop1 == 'Control-M') %}
-          VGAPPS,LVJAVA_CTM,/java_ctrlm,5
-          {% elif (javaop0 == 'Base_de_datos') and (javaop1 == 'Oracle') %}
-          VGAPPS,LVJAVA_ORA,/java_oracle,5
-          {% elif (javaop0 == 'Base_de_datos') and (javaop1 == 'Db2') %}
-          VGAPPS,LVJAVA_DB2,/java_db2,5
-          {% elif (javaop0 == 'Midlware') and (javaop1 == 'Jboss') %}
-          VGAPPS,LVJAVA_MDW,/java_mdw,5
+        run_playbook: |
+          {% if tarea == 'Instalar_java' %}
+          ['instalar/chkvg']
+          {% elif tarea == 'Actualizar_java' %}
+          ['actualizar/chkjvr']
+          {% elif tarea == 'Borrara_java' %}
+          ['borrara/rmjvr']
           {% else %}
-          "No selecciono ninguna opcion Java"
+          ['No_selecciono_ninguna_tarea']
           {% endif %}
-
-- block:
-    - debug:
-        msg: "{{javavglvfs|trim|replace('\n','')}}"
-
-    # - set_fact:
-    #     vgnm: "{{javavglvfs.split(',')[0]|trim|default('no_vg_faund')}}"
-    #     lvnm: "{{javavglvfs.split(',')[1]|trim|default('no_lv_faund')}}"
-    #     mpnm: "{{javavglvfs.split(',')[2]|trim|default('no_fs_faund')}}"
-    #     mpsz: "{{javavglvfs.split(',')[3]|trim|default('0')}}"
-
-    - set_fact:
-        vgnm: "{{javavglvfs.split(',')[0]}}"
-        lvnm: "{{javavglvfs.split(',')[1]}}"
-        mpnm: "{{javavglvfs.split(',')[2]}}"
-        mpsz: "{{javavglvfs.split(',')[3]}}"
-
-    - name: Validar {{javavglvfs.split(',')[0]|trim}}
+    
+    - name: Resultado de la seleccion
       become: true
-      shell: vgs {{devnull}} --units g | tr -s ' ' , | cut -d, -f2 | grep {{vgnm}}
-      register: rstlopvg
-      failed_when: rstlopvg.rc not in [0, 1]
+      assert:
+        that:
+          - "'No_selecciono_ninguna_tarea' not in run_playbook"
+        fail_msg: "run_playbook"
+        success_msg: "Ha seleccionado: {{ run_playbook | replace('\n', '') }}"
+      run_once: true
+      delegate_to: localhost
+    
+    - name: Inicia tareas {{ run_playbook }}
+      include_tasks: "{{ tareas }}.yml"
+      loop: "{{ run_playbook }}"
+      loop_control:
+        loop_var: tareas
 
-    - set_fact:
-        vgconf: "{{rstlopvg.stdout|default('no_fs_faund')|trim}}"
 
-    - set_fact:
-        javavg: |
-          {% if (vgconf == 'VGAPPS') %}
-          "Validar LVJAVA_CTM"
-          {% else %}
-          "Ejecutar Plantilla por API"
-          {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
