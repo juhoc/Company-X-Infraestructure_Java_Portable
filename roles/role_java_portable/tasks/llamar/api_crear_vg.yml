@@ -1,5 +1,5 @@
 ---
 - block:
     -name: Emula llamada API
-     dedbug:
+     debug:
         msg: "Llamar por API plantilla LVM"
