@@ -42,7 +42,7 @@
           {% endif %}
 
     - name: Se encontrol {{javavglvfs.split(',')[1]|trim}} se ejecuta la tarea {{run_playbook}}
-      include_tasks: "{{ tareas1 }}.yml"
+      include_tasks: "{{ tareas2 }}.yml"
       loop: "{{ run_playbook }}"
       loop_control:
         loop_var: tareas2
