@@ -32,7 +32,7 @@
       failed_when: rstlopvgnm.rc not in [0, 1]
 
     - set_fact:
-        vgconfnm: "{{rstlopvgnm.stdout|default('no_vg_faund')|trim}}"
+        vgconfnm: "{{rstlopvgnm.stdout|default('no_vg_found')|trim}}"
 
     - name: Validar el espacio libre del VG - {{javavglvfs.split(',')[0]|trim}}
       become: true

@@ -27,32 +27,19 @@
 - block:
     - name: Validar si existe {{javavglvfs.split(',')[1]|trim}}
       become: true
-      shell: lvs {{devnull}} --units g | tr -s ' ' , | cut -d, -f2 | grep {{lvnm}}
-      register: rstloplv
-      failed_when: rstloplv.rc not in [0, 1]
+      shell: df {{devnull}} -k | grep {{javavglvfs.split(',')[0]}} | grep {{javavglvfs.split(',')[2]}} | tr -s ' ' , | cut -d, -f6
+      register: rstlopfs
+      failed_when: rstlopfs.rc not in [0, 1]
 
     - set_fact:
-        lvconf: "{{rstloplv.stdout|default('no_lv_found')|trim}}"
-
-    - name: Validar el tamaño {{javavglvfs.split(',')[1]|trim}}
-      become: true
-      shell: lvs {{devnull}} --units g | tr -s ' ' , | cut -d, -f2 | grep {{lvnm}} | cut -d, -f5 | cut -d. -f1
-      register: rstloplvsz
-      failed_when: rstloplv.rc not in [0, 1]
-
-    - set_fact:
-        lvconfsz: "{{rstloplvsz.stdout|default('0')|trim}}"
+        fsconf: "{{rstlopfs.stdout|default('no_fs_found')|trim}}"
 
     - set_fact:
         run_playbook: |
-          {% if (lvconf == 'LVJAVA_CTM') and (lvconfsz | int >= 5) %}
-          ['validar/chkfs']
-          {% elif (lvconf == 'LVJAVA_CTM') and (lvconfsz | int < 5) %}
-          ['gestionar/extederlv']
-          {% elif (lvconf == 'LVJAVA_CTM') %}
-          ['gestionar/crearlv']
+          {% if (fsconf == '/java_ctrlm') %}
+          ['instalar/java']
           {% else %}
-          ['llamar/api_crear_lv']
+          ['gestionar/crearfs']
           {% endif %}
 
     - name: Se encontrol {{javavglvfs.split(',')[1]|trim}} se ejecuta la tarea {{run_playbook}}
