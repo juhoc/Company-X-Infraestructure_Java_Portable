@@ -45,9 +45,9 @@
             "tarea": "{{accionjtp.tarea}}",
             "vgn": "{{vgnm}}",
             "lvn": "{{lvnm}}",
-            "lvsz": {{lvsz}} }'
-            # "mpn": "{{mpnm}}",
-            # "fst": "{{fstp}}" }'
+            "lvsz": {{lvsz}},
+            "mpn": "{{mpnm}}",
+            "fst": "{{fstp}}" }'
       register: lanzar_plantilla
   delegate_to: localhost
   run_once: true
