@@ -42,6 +42,8 @@
 
     - set_fact:
         vgconfsz: "{{rstlopvgsz.stdout|default('0')|trim}}"
+
+    - set_fact:
         vgconftsz: "{{vgconfsz | int - 5}}"
 
     - set_fact:
