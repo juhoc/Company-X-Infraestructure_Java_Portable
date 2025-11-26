@@ -17,6 +17,7 @@ accionjtp:
   idcrqinc: "{{idcrqinc}}"
   tarea: "Proceso_LVM"
   demora: 2
+  reintentos: 9999
   # vgn: "{{vgnm}}"
   # lvn: "{{lvnm}}"
   # lvsz: "{{mpsz}}"
