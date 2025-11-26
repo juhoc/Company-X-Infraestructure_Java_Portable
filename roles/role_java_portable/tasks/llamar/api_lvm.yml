@@ -47,7 +47,7 @@
             "lvn": "{{lvnm}}",
             "lvsz": {{lvsz}},
             "mpn": "{{mpnm}}",
-            "fst": "{{fstp}}" }'
+            "fst": "{{fstp|default("xfs")}}" }'
       register: lanzar_plantilla
   delegate_to: localhost
   run_once: true
