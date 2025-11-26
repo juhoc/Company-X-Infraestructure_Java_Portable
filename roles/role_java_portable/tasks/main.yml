@@ -45,9 +45,9 @@
     - set_fact:
         run_playbook: |
           {% if tarea == 'Instalar_java' %}
-          ['instalar/chkvg']
+          ['validar/chkvg']
           {% elif tarea == 'Actualizar_java' %}
-          ['actualizar/chkjvr']
+          ['validar/chkjvr']
           {% elif tarea == 'Borrara_java' %}
           ['borrara/rmjvr']
           {% else %}
