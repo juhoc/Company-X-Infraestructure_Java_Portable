@@ -42,8 +42,8 @@
           limit: "{{ansible_limit}}"
           extra_vars:
             '{ "idcrqinc": "{{accionjtp.idcrqinc|trim}}",
-            "tarea": "{{accionjtp.tarea}}" }'
-            # "vgn": "{{vgnm}}",
+            "tarea": "{{accionjtp.tarea}}",
+            "vgn": "{{vgnm}}" }'
             # "lvn": "{{lvnm}}",
             # "lvsz": "{{mpsz}}",
             # "mpn": "{{mpnm}}",
