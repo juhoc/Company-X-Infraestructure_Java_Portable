@@ -14,7 +14,7 @@ accionjtp:
   inventarioid: 2
   trabajoid: 76
   credemciales: "[6]"
-  idcrqinc: "{{idcrqinc|trim}}"
+  idcrqinc: "{{idcrqinc}}"
   tarea: "Proceso_LVM"
   # vgn: "{{vgnm}}"
   # lvn: "{{lvnm}}"
