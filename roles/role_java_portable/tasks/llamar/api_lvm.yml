@@ -44,11 +44,11 @@
             '{ 
               "idcrqinc": "{{accionjtp.idcrqinc|trim}}",
               "tarea": "{{accionjtp.tarea}}",
-              "vgn": "{{vgnm}}",
-              "lvn": "{{lvnm}}",
-              "lvsz": "{{mpsz}}",
-              "mpn": "{{mpnm}}",
-              "fst": "{{fstp}}}",
+              "vgn": "{{accionjtp.vgnm}}",
+              "lvn": "{{accionjtp.lvnm}}",
+              "lvsz": "{{accionjtp.mpsz}}",
+              "mpn": "{{accionjtp.mpnm}}",
+              "fst": "{{accionjtp.fstp}}}",
             }'
       register: lanzar_plantilla
   delegate_to: localhost
