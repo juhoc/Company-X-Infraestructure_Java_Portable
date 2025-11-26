@@ -42,12 +42,12 @@
           limit: "{{ansible_limit}}"
           extra_vars:
             '{ "idcrqinc": "{{accionjtp.idcrqinc|trim}}",
-            "tarea": "{{accionjtp.tarea}}",
-            "vgn": "{{vgnm}}",
-            "lvn": "{{lvnm}}",
-            "lvsz": "{{mpsz}}",
-            "mpn": "{{mpnm}}",
-            "fst": "{{fstp}}" }'
+            "tarea": "{{accionjtp.tarea}}" }'
+            # "vgn": "{{vgnm}}",
+            # "lvn": "{{lvnm}}",
+            # "lvsz": "{{mpsz}}",
+            # "mpn": "{{mpnm}}",
+            # "fst": "{{fstp}}" }'
       register: lanzar_plantilla
   delegate_to: localhost
   run_once: true
