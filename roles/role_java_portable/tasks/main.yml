@@ -19,13 +19,13 @@
     - set_fact:
         javavglvfs: |
           {% if (javaop0 == 'Batch') and (javaop1 == 'Control-M') %}
-          {{ ctrlm }}
+          {{ctrlm|trim}}
           {% elif (javaop0 == 'Base_de_datos') and (javaop1 == 'Oracle') %}
-          {{ oracle }}
+          {{oracle|trim}}
           {% elif (javaop0 == 'Base_de_datos') and (javaop1 == 'Db2') %}
-          {{ db2 }}
+          {{db2|trim}}
           {% elif (javaop0 == 'Midlware') and (javaop1 == 'Jboss') %}
-          {{ mdw }}
+          {{mdw|trim}}
           {% else %}
           "No selecciono ninguna opcion Java"
           {% endif %}
