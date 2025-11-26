@@ -13,7 +13,7 @@ devnull: "2>/dev/null"
 accionjtp:
   inventarioid: 2
   trabajoid: 76
-  credemciales: 6
+  credemciales: "[6]"
   idcrqinc: "{{idcrqinc}}"
   tarea: "Proceso_LVM"
   # vgn: "{{vgnm}}"
