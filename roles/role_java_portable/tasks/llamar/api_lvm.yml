@@ -21,7 +21,7 @@
     - set_fact:
         vgnm: "{{javavglvfs.split(',')[0]|trim}}"
         lvnm: "{{javavglvfs.split(',')[1]|trim}}"
-        lvsz: "{{javavglvfs.split(',')[2]|int|trim}}"
+        lvsz: "{{javavglvfs.split(',')[2]|trim|int}}"
         mpnm: "{{javavglvfs.split(',')[3]|trim}}"
 
 - block:
