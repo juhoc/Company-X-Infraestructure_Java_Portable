@@ -26,14 +26,7 @@
 
 - block:
     - debug:
-        msg: |
-          "{{accionjtp.idcrqinc}}"
-          "{{accionjtp.tarea}}"
-          "{{vgnm}}"
-          "{{lvmn}}"
-          "{{mpsz}}"
-          "{{mpnm}}"
-          "{{fstp}}"
+        msg: "{{vgnm}},{{lvmn}},{{mpsz}},{{mpnm}},{{fstp}}"
 
 # - block:
 #     - name: Ejecutar plantilla Logical Volume Manager
