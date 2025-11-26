@@ -21,8 +21,8 @@
     - set_fact:
         vgnm: "{{javavglvfs.split(',')[0]|trim}}"
         lvnm: "{{javavglvfs.split(',')[1]|trim}}"
-        mpnm: "{{javavglvfs.split(',')[2]|trim}}"
-        mpsz: "{{javavglvfs.split(',')[3]|int|trim}}"
+        lvsz: "{{javavglvfs.split(',')[2]|int|trim}}"
+        mpnm: "{{javavglvfs.split(',')[3]|trim}}"
 
 - block:
     - name: Ejecutar plantilla Logical Volume Manager
@@ -44,8 +44,8 @@
             '{ "idcrqinc": "{{accionjtp.idcrqinc|trim}}",
             "tarea": "{{accionjtp.tarea}}",
             "vgn": "{{vgnm}}",
-            "lvn": "{{lvnm}}" }'
-            # "lvsz": "{{mpsz}}",
+            "lvn": "{{lvnm}}",
+            "lvsz": "{{lvsz}}" }'
             # "mpn": "{{mpnm}}",
             # "fst": "{{fstp}}" }'
       register: lanzar_plantilla
