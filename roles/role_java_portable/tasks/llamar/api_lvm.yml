@@ -26,10 +26,10 @@
 
 - block:
     - debug:
-        msg: |
-          - "{{accionjtp.idcrqinc}}"
-          - "{{accionjtp.tarea}}"
-          - "{{vgnm}}"
+        msg: "{{vgnm}}"
+          # - "{{accionjtp.idcrqinc}}"
+          # - "{{accionjtp.tarea}}"
+          # - "{{vgnm}}"
           # - "{{lvmn}}"
           # - "{{mpsz}}"
           # - "{{mpnm}}"
