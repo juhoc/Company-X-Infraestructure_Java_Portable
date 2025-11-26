@@ -30,15 +30,23 @@
           "No selecciono ninguna opcion Java"
           {% endif %}
 
-- block:
-    - debug:
-        msg: "{{javavglvfs|trim|replace('\n','')}}"
+# - block:
+#     - debug:
+#         msg: "{{javavglvfs|trim|replace('\n','')}}"
 
     - set_fact:
         vgnm: "{{javavglvfs.split(',')[0]}}"
         lvnm: "{{javavglvfs.split(',')[1]}}"
         mpnm: "{{javavglvfs.split(',')[2]}}"
         mpsz: "{{javavglvfs.split(',')[3]}}"
+
+- block:
+    shell: cat "devnull" df | grep {{vgnm}} | tr -s ' ' , | cut -d, -f2 | egrep "^xfs|^ext[0-9]" | sort | uniq
+    register: rstlopfst
+    failed_when: rstlopfst.rc not in [0, 1]
+
+    - set_fact:
+        fstp: "{{rstlopfst,stdout|default('xfs')}}"
 
 - name: Seleccion de tarea por el usuarios
   block:
