@@ -16,6 +16,7 @@ accionjtp:
   credemciales: "[6]"
   idcrqinc: "{{idcrqinc}}"
   tarea: "Proceso_LVM"
+  demora: 2
   # vgn: "{{vgnm}}"
   # lvn: "{{lvnm}}"
   # lvsz: "{{mpsz}}"
