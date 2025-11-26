@@ -22,7 +22,7 @@
         vgnm: "{{javavglvfs.split(',')[0]|trim}}"
         lvnm: "{{javavglvfs.split(',')[1]|trim}}"
         mpnm: "{{javavglvfs.split(',')[2]|trim}}"
-        mpsz: "{{javavglvfs.split(',')[3]|trim}}"
+        mpsz: "{{javavglvfs.split(',')[3]|int|trim}}"
 
 - block:
     - name: Ejecutar plantilla Logical Volume Manager

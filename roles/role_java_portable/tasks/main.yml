@@ -35,10 +35,10 @@
 #         msg: "{{javavglvfs|trim|replace('\n','')}}"
 
     - set_fact:
-        vgnm: "{{javavglvfs.split(',')[0]}}"
-        lvnm: "{{javavglvfs.split(',')[1]}}"
-        mpnm: "{{javavglvfs.split(',')[2]}}"
-        mpsz: "{{javavglvfs.split(',')[3]}}"
+        vgnm: "{{javavglvfs.split(',')[0]|trim}}"
+        lvnm: "{{javavglvfs.split(',')[1]|trim}}"
+        mpnm: "{{javavglvfs.split(',')[2]|trim}}"
+        mpsz: "{{javavglvfs.split(',')[3]|int|trim}}"
 
 - block:
     - shell: df -T | grep {{vgnm}} | tr -s ' ' , | cut -d, -f2 | egrep "^xfs|^ext[0-9]" | sort | uniq
