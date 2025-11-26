@@ -1,0 +1,50 @@
+---
+- name: Tareas por bloques
+  block:
+    - name: Ejecutar plantilla Logical Volume Manager
+      uri:
+        url: "{{tower_base_url}}/api/v2/job_templates/{{accionjtp.trabajoid}}/launch/"
+        validate_certs: false
+        force_basic_auth: true
+        status_code: [200, 201, 204, 400]
+        method: POST
+        headers:
+          Authorization: "Bearer {{tower_token}}"
+          Content-Type: "application/json"
+        body_format: json
+        body:
+          inventory: "{{accionjtp.inventarioid}}"
+          credentials: "{{accionjtp.credemciales}}"
+          limit: "{{ansible_limit}}"
+          extra_vars:
+            '{ 
+              "idcrqinc": "{{accionjtp.idcrqinc|trim}}",
+              "tarea": "{{accionjtp.tarea}}",
+              "vgn": "{{{accionjtp.vgnm}}",
+              "lvn": "{{{accionjtp.lvnm}}",
+              "lvsz": "{{{accionjtp.mpsz}}",
+              "mpn": "{{{accionjtp.mpnm}}",
+              "fst": "{{accionjtp.fstp}}}"
+            }'
+      register: lanzar_plantilla
+  delegate_to: localhost
+  run_once: true
+
+- name: Tareas por bloques
+  block:
+    - name: Sensar ejecucion plantilla Logical Volume Manager
+      uri:
+        url: "{{ lanzar_plantilla.location }}"
+        validate_certs: no
+        force_basic_auth: true
+        method: GET
+        headers:
+          Authorization: Bearer {{ tower_token }}
+        status_code: 200, 201, 204
+      register: trabajos
+      until: trabajos.json.status == 'successful' or trabajos.json.status == 'failed' or trabajos.json.status == 'canceled' 
+      failed_when: trabajos.json.status == 'failed' or trabajos.json.status == 'canceled'
+      delay: "{{ accionjtp.demora }}"
+      retries: "{{ accionjtp.reintentos }}"
+  delegate_to: localhost
+  run_once: true
