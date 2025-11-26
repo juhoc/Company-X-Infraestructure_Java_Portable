@@ -1,6 +1,5 @@
 ---
-- name: Tareas por bloques
-  block:
+- block:
     - name: Ejecutar plantilla Logical Volume Manager
       uri:
         url: "{{tower_base_url}}/api/v2/job_templates/{{accionjtp.trabajoid}}/launch/"
@@ -24,14 +23,13 @@
               "lvn": "{{accionjtp.lvnm}}",
               "lvsz": "{{accionjtp.mpsz}}",
               "mpn": "{{accionjtp.mpnm}}",
-              "fst": "{{accionjtp.fstp}}}"
+              "fst": "{{accionjtp.fstp}}}",
             }'
       register: lanzar_plantilla
   delegate_to: localhost
   run_once: true
 
-- name: Tareas por bloques
-  block:
+- block:
     - name: Sensar ejecucion plantilla Logical Volume Manager
       uri:
         url: "{{ lanzar_plantilla.location }}"
