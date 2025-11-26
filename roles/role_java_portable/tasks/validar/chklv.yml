@@ -1,28 +1,28 @@
 ---
-- block:
-    - set_fact:
-        javavglvfs: |
-          {% if (javaop0 == 'Batch') and (javaop1 == 'Control-M') %}
-          {{ctrlm|trim}}
-          {% elif (javaop0 == 'Base_de_datos') and (javaop1 == 'Oracle') %}
-          {{oracle|trim}}
-          {% elif (javaop0 == 'Base_de_datos') and (javaop1 == 'Db2') %}
-          {{db2|trim}}
-          {% elif (javaop0 == 'Midlware') and (javaop1 == 'Jboss') %}
-          {{mdw|trim}}
-          {% else %}
-          "No selecciono ninguna opcion Java"
-          {% endif %}
+# - block:
+#     - set_fact:
+#         javavglvfs: |
+#           {% if (javaop0 == 'Batch') and (javaop1 == 'Control-M') %}
+#           {{ctrlm|trim}}
+#           {% elif (javaop0 == 'Base_de_datos') and (javaop1 == 'Oracle') %}
+#           {{oracle|trim}}
+#           {% elif (javaop0 == 'Base_de_datos') and (javaop1 == 'Db2') %}
+#           {{db2|trim}}
+#           {% elif (javaop0 == 'Midlware') and (javaop1 == 'Jboss') %}
+#           {{mdw|trim}}
+#           {% else %}
+#           "No selecciono ninguna opcion Java"
+#           {% endif %}
 
-- block:
-    - debug:
-        msg: "{{javavglvfs|trim|replace('\n','')}}"
+# - block:
+#     - debug:
+#         msg: "{{javavglvfs|trim|replace('\n','')}}"
 
-    - set_fact:
-        vgnm: "{{javavglvfs.split(',')[0]}}"
-        lvnm: "{{javavglvfs.split(',')[1]}}"
-        mpnm: "{{javavglvfs.split(',')[2]}}"
-        mpsz: "{{javavglvfs.split(',')[3]}}"
+#     - set_fact:
+#         vgnm: "{{javavglvfs.split(',')[0]}}"
+#         lvnm: "{{javavglvfs.split(',')[1]}}"
+#         mpnm: "{{javavglvfs.split(',')[2]}}"
+#         mpsz: "{{javavglvfs.split(',')[3]}}"
 
 - block:
     - name: Validar si existe {{javavglvfs.split(',')[1]|trim}}
