@@ -52,7 +52,7 @@
           {% elif (lvconf == 'LVJAVA_CTM') %}
           ['gestionar/crearlv']
           {% else %}
-          ['llamar/api_crear_lv']
+          ['llamar/api_lvm']
           {% endif %}
 
     - name: Se encontrol {{javavglvfs.split(',')[1]|trim}} se ejecuta la tarea {{run_playbook}}
