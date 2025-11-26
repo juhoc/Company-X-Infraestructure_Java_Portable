@@ -26,7 +26,7 @@
 
 - block:
     - debug:
-        msg: "{{lvmn}}" #,{{lvmn}},{{mpsz}},{{mpnm}},{{fstp}}"
+        msg: "{{lvnm}}" #,{{lvnmn}},{{mpsz}},{{mpnm}},{{fstp}}"
 
 # - block:
 #     - name: Ejecutar plantilla Logical Volume Manager
