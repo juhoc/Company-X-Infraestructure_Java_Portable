@@ -1,4 +1,9 @@
 ---
+ctrlm: "VGAPPS,LVJAVA_CTM,/java_ctrlm,5"
+oracle: "VGAPPS,LVJAVA_ORA,/java_oracle,5"
+db2: "VGAPPS,LVJAVA_DB2,/java_db2,5"
+mdw: "VGAPPS,LVJAVA_MDW,/java_mdw,5"
+
 #---variables de api_dev
 tower_base_url: "http://172.18.0.5:8052"
 tower_token: "T3qIBMvwZMS9321AL39Dlm66HeB3iX"

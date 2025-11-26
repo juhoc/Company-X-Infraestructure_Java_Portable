@@ -1,0 +1,25 @@
+---
+# - block:
+#     - set_fact:
+#         javavglvfs: |
+#           {% if (javaop0 == 'Batch') and (javaop1 == 'Control-M') %}
+#           VGAPPS,LVJAVA_CTM,/java_ctrlm,5
+#           {% elif (javaop0 == 'Base_de_datos') and (javaop1 == 'Oracle') %}
+#           VGAPPS,LVJAVA_ORA,/java_oracle,5
+#           {% elif (javaop0 == 'Base_de_datos') and (javaop1 == 'Db2') %}
+#           VGAPPS,LVJAVA_DB2,/java_db2,5
+#           {% elif (javaop0 == 'Midlware') and (javaop1 == 'Jboss') %}
+#           VGAPPS,LVJAVA_MDW,/java_mdw,5
+#           {% else %}
+#           "No selecciono ninguna opcion Java"
+#           {% endif %}
+
+# - block:
+#     - debug:
+#         msg: "{{javavglvfs|trim|replace('\n','')}}"
+
+#     - set_fact:
+#         vgnm: "{{javavglvfs.split(',')[0]}}"
+#         lvnm: "{{javavglvfs.split(',')[1]}}"
+#         mpnm: "{{javavglvfs.split(',')[2]}}"
+#         mpsz: "{{javavglvfs.split(',')[3]}}"
