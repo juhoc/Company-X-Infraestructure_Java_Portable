@@ -41,8 +41,9 @@
         mpsz: "{{javavglvfs.split(',')[3]}}"
 
 - block:
-    - shell: cat "devnull" df | grep {{vgnm}} | tr -s ' ' , | cut -d, -f2 | egrep "^xfs|^ext[0-9]" | sort | uniq
+    - shell: df {{devnull}} | grep {{vgnm}} | tr -s ' ' , | cut -d, -f2 | egrep "^xfs|^ext[0-9]" | sort | uniq
       register: rstlopfst
+      become: true
       failed_when: rstlopfst.rc not in [0, 1]
 
     - set_fact:
