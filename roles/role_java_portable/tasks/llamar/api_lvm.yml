@@ -4,11 +4,11 @@
         msg: |
           - "{{accionjtp.idcrqinc}}"
           - "{{accionjtp.tarea}}"
-          - "{{accionjtp.vgnm}}"
-          - "{{accionjtp.lvmn}}"
-          - "{{accionjtp.mpsz}}"
-          - "{{accionjtp.mpnm}}"
-          - "{{accionjtp.fstp}}"
+          # - "{{accionjtp.vgnm}}"
+          # - "{{accionjtp.lvmn}}"
+          # - "{{accionjtp.mpsz}}"
+          # - "{{accionjtp.mpnm}}"
+          # - "{{accionjtp.fstp}}"
 
 # - block:
 #     - name: Ejecutar plantilla Logical Volume Manager
