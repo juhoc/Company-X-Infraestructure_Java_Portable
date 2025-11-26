@@ -1,5 +1,16 @@
 ---
 - block:
+    debug:
+      msg: |
+        - "{{accionjtp.idcrqinc}}"
+        - "{{accionjtp.tarea}}"
+        - "{{accionjtp.vgnm}}"
+        - "{{accionjtp.lvmn}}"
+        - "{{accionjtp.mpsz}}"
+        - "{{accionjtp.mpnm}}"
+        - "{{accionjtp.fstp}}"
+
+- block:
     - name: Ejecutar plantilla Logical Volume Manager
       uri:
         url: "{{tower_base_url}}/api/v2/job_templates/{{accionjtp.trabajoid}}/launch/"
