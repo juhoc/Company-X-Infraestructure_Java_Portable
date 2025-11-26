@@ -48,7 +48,7 @@
 
     - set_fact:
         run_playbook: |
-          {% if (vgconf == 'VGAPPS') and (vgconftsz | int > 10) %}
+          {% if (vgconfnm == 'VGAPPS') and (vgconftsz | int > 10) %}
           ['validar/chklv']
           {% else %}
           ['llamar/api_crear_vg']
