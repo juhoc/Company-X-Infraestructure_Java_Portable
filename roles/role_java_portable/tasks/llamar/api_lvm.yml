@@ -19,9 +19,9 @@
         msg: "{{javavglvfs|trim|replace('\n','')}}"
 
     - set_fact:
-        vgnm: "{{javavglvfs.split(',')[0]}}"
-        lvnm: "{{javavglvfs.split(',')[1]}}"
-        mpnm: "{{javavglvfs.split(',')[2]}}"
+        vgnm: "{{javavglvfs.split(',')[0]|trim}}"
+        lvnm: "{{javavglvfs.split(',')[1]|trim}}"
+        mpnm: "{{javavglvfs.split(',')[2]|trim}}"
         mpsz: "{{javavglvfs.split(',')[3]|trim}}"
 
 - block:
@@ -48,7 +48,7 @@
               "lvn": "{{lvnm}}",
               "lvsz": "{{mpsz}}",
               "mpn": "{{mpnm}}",
-              "fst": "{{fstp}}}",
+              "fst": "{{fstp}}}"
             }'
       register: lanzar_plantilla
   delegate_to: localhost
