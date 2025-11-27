@@ -27,6 +27,8 @@
 - block:
     - name: Validar la version de JAVA
       become: true
-      shell: ls -lR /java_ctrlm/ | grep bin:$ | tr -d :
-      register: rstlopjv
+      path: "{{javavglvfs.split(',')[3]|trim}}"
+      patterns: java
+      file_type: file
+      register: rstlopjf
 #      failed_when: rstlopfs.rc not in [0, 1]
