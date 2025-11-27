@@ -36,7 +36,7 @@
 
     - name: Validar el tamaño {{javavglvfs.split(',')[1]|trim}}
       become: true
-      shell: lvs {{devnull}} --units g | tr -s ' ' , | cut -d, -f2 | grep {{lvnm}} | cut -d, -f5 | cut -d. -f1
+      shell: lvs {{devnull}} --units g | tr -s ' ' , | grep {{lvnm}} | cut -d, -f5 | cut -d. -f1
       register: rstloplvsz
       failed_when: rstloplv.rc not in [0, 1]
 
