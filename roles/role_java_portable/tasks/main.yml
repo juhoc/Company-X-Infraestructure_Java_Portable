@@ -51,8 +51,7 @@
           {% if () %}
         "{{rstlopfst.stdout|default('xfs')}}"
 
-- name: Seleccion de tarea por el usuarios
-  block:
+- block:
     - set_fact:
         run_playbook: |
           {% if tarea == 'Instalar_java' %}
