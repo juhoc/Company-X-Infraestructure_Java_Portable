@@ -35,4 +35,4 @@
 #      failed_when: rstlopfs.rc not in [0, 1]
 
     - debug:
-        msg: "{{rstlopjf.results}}"
+        msg: "{{rstlopjf}}"
