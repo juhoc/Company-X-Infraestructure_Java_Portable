@@ -37,3 +37,7 @@
     - name: Ejecutar java -version con el patrón
       shell: "{{rstlopjf.files[0].path}} -version"
       register: rstlopjve
+
+    - debug:
+        msg: "{{rstlopjve.stderr_lines[0]}}"
+   
