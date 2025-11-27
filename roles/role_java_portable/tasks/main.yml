@@ -30,10 +30,6 @@
           "No selecciono ninguna opcion Java"
           {% endif %}
 
-# - block:
-#     - debug:
-#         msg: "{{javavglvfs|trim|replace('\n','')}}"
-
     - set_fact:
         vgnm: "{{javavglvfs.split(',')[0]|trim}}"
         lvnm: "{{javavglvfs.split(',')[1]|trim}}"
@@ -47,11 +43,8 @@
       failed_when: rstlopfst.rc not in [0, 1]
 
     - set_fact:
-        fstp: |
-          {% if () %}
-        "{{rstlopfst.stdout|default('xfs')}}"
+        fstp: "{{rstlopfst.stdout|default('xfs')}}"
 
-- block:
     - set_fact:
         run_playbook: |
           {% if tarea == 'Instalar_java' %}
