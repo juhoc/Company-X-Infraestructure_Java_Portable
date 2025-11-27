@@ -38,5 +38,5 @@
     - debug:
         msg: "{{ rstlopjf.files[0].path }}"
 
-    # - name: Ejecutar java -version con el patrón
-    #   shell: "{{ rstlopjf.files | selectattr('path', 'match', '/java$') | map(attribute='path') | first }} -version"
+    - name: Ejecutar java -version con el patrón
+      shell: "{{ rstlopjf.files[0].path }} -version"
