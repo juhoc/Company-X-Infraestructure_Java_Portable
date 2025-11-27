@@ -47,7 +47,9 @@
       failed_when: rstlopfst.rc not in [0, 1]
 
     - set_fact:
-        fstp: "{{rstlopfst.stdout|default('xfs')}}"
+        fstp: |
+          {% if () %}
+        "{{rstlopfst.stdout|default('xfs')}}"
 
 - name: Seleccion de tarea por el usuarios
   block:
