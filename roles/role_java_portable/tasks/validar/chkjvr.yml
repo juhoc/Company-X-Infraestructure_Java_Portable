@@ -29,8 +29,8 @@
       become: true
       find:
         path: "{{javavglvfs.split(',')[3]|trim}}/"
-        patterns: java
-        file_type: file
+        patterns: bin
+        file_type: directory
       register: rstlopjf
 #      failed_when: rstlopfs.rc not in [0, 1]
 
