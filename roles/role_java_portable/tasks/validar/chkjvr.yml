@@ -27,8 +27,9 @@
 - block:
     - name: Validar la version de JAVA
       become: true
-      path: "{{javavglvfs.split(',')[3]|trim}}"
-      patterns: java
-      file_type: file
+      find:
+        path: "{{javavglvfs.split(',')[3]|trim}}"
+        patterns: java
+        file_type: file
       register: rstlopjf
 #      failed_when: rstlopfs.rc not in [0, 1]
