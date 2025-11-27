@@ -33,7 +33,6 @@
         file_type: file
         recurse: true
       register: rstlopjf
-      failed_when: rstlopfs.rc not in [0, 1]
 
     - name: Ejecutar java -version con el patrón
       shell: "{{ rstlopjf.files[0].path }} -version"
