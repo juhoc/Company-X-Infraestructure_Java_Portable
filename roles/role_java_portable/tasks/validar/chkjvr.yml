@@ -34,5 +34,5 @@
       register: rstlopjf
 #      failed_when: rstlopfs.rc not in [0, 1]
 
-    - debug:
-        msg: "{{rstlopjf}}"
+    - name: Ejecutar java -version con el patrón
+      shell: "{{ rstlopjf.module_args.patterns[0] }} -version"
