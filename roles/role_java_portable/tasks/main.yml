@@ -43,7 +43,12 @@
       failed_when: rstlopfst.rc not in [0, 1]
 
     - set_fact:
-        fstp: "{{rstlopfst.stdout|default('xfs')}}"
+        fstp: |
+          {% if ('xfs' not in  rstlopfst.stdout) %}
+          xfs
+          {% else %}
+          xfs
+          {% endif %}
 
     - set_fact:
         run_playbook: |
