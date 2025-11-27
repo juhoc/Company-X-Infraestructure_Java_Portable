@@ -33,3 +33,6 @@
         file_type: file
       register: rstlopjf
 #      failed_when: rstlopfs.rc not in [0, 1]
+
+    - debug:
+        msg: "{{rstlopjf.results}}"
