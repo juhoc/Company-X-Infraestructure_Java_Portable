@@ -23,3 +23,10 @@
 #         lvnm: "{{javavglvfs.split(',')[1]}}"
 #         mpnm: "{{javavglvfs.split(',')[2]}}"
 #         mpsz: "{{javavglvfs.split(',')[3]}}"
+
+- block:
+    - name: Validar la version de JAVA
+      become: true
+      shell: ls -lR /java_ctrlm/ | grep bin:$ | tr -d :
+      register: rstlopjv
+#      failed_when: rstlopfs.rc not in [0, 1]

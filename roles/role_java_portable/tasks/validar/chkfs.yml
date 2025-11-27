@@ -37,7 +37,7 @@
     - set_fact:
         run_playbook: |
           {% if (fsconf == '/java_ctrlm') %}
-          ['instalar/java']
+          ['validar/chkjvr']
           {% else %}
           ['gestionar/crearfs']
           {% endif %}

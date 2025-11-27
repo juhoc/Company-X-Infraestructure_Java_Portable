@@ -35,20 +35,21 @@
         lvnm: "{{javavglvfs.split(',')[1]|trim}}"
         lvsz: "{{javavglvfs.split(',')[2]|trim|int}}"
         mpnm: "{{javavglvfs.split(',')[3]|trim}}"
+        fstp: "{{javavglvfs.split(',')[4]|trim}}"
 
 - block:
-    - shell: df -T | grep {{vgnm}} | tr -s ' ' , | cut -d, -f2 | egrep "^xfs|^ext[0-9]" | sort | uniq
-      register: rstlopfst
-      become: true
-      failed_when: rstlopfst.rc not in [0, 1]
+    # - shell: df -T | grep {{vgnm}} | tr -s ' ' , | cut -d, -f2 | egrep "^xfs|^ext[0-9]" | sort | uniq
+    #   register: rstlopfst
+    #   become: true
+    #   failed_when: rstlopfst.rc not in [0, 1]
 
-    - set_fact:
-        fstp: |
-          {% if ('xfs' not in rstlopfst.stdout) %}
-          xfs
-          {% else %}
-          xfs
-          {% endif %}
+    # - set_fact:
+    #     fstp: |
+    #       {% if ('xfs' not in rstlopfst.stdout) %}
+    #       xfs
+    #       {% else %}
+    #       xfs
+    #       {% endif %}
 
     - set_fact:
         run_playbook: |
