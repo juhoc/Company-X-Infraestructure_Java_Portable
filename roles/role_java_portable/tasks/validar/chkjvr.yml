@@ -35,5 +35,5 @@
       register: rstlopjf
 
     - name: Ejecutar java -version con el patrón
-      shell: "{{ rstlopjf.files[0].path }} -version"
-      recurse: rstlopjve
+      shell: "{{rstlopjf.files[0].path}} -version"
+      register: rstlopjve
