@@ -28,9 +28,9 @@
     - name: Validar la version de JAVA
       become: true
       find:
-        path: "{{javavglvfs.split(',')[3]|trim}}/"
-        patterns: bin
-        file_type: directory
+        path: "{{javavglvfs.split(',')[3]|trim}}"
+        patterns: "java"
+        file_type: file
       register: rstlopjf
 #      failed_when: rstlopfs.rc not in [0, 1]
 
