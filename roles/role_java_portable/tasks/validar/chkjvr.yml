@@ -31,6 +31,7 @@
         path: "{{javavglvfs.split(',')[3]|trim}}"
         patterns: "java"
         file_type: file
+        recurse: true
       register: rstlopjf
 #      failed_when: rstlopfs.rc not in [0, 1]
 
