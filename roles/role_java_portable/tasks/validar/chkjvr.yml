@@ -36,7 +36,7 @@
 #      failed_when: rstlopfs.rc not in [0, 1]
 
     - debug:
-        msg: "{{ rstlopjf.files }}"
+        msg: "{{ rstlopjf.files[0].path }}"
 
     # - name: Ejecutar java -version con el patrón
     #   shell: "{{ rstlopjf.files | selectattr('path', 'match', '/java$') | map(attribute='path') | first }} -version"
