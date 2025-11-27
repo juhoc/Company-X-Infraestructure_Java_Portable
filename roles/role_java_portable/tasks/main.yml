@@ -44,7 +44,7 @@
 
     - set_fact:
         fstp: |
-          {% if ('xfs' not in  rstlopfst.stdout) %}
+          {% if ('xfs' not in rstlopfst.stdout) %}
           xfs
           {% else %}
           xfs
