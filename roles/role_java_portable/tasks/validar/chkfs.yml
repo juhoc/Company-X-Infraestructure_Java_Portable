@@ -25,7 +25,7 @@
 #         mpsz: "{{javavglvfs.split(',')[3]}}"
 
 - block:
-    - name: Validar si existe {{javavglvfs.split(',')[1]|trim}}
+    - name: Validar si existe {{javavglvfs.split(',')[3]|trim}}
       become: true
       shell: df {{devnull}} -k | grep {{javavglvfs.split(',')[0]}} | grep {{javavglvfs.split(',')[2]}} | tr -s ' ' , | cut -d, -f6
       register: rstlopfs
