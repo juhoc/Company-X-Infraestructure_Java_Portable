@@ -33,14 +33,13 @@
         file_type: file
         recurse: true
       register: rstlopjf
-
+    
     - name: Ejecutar java -version con el patrón
       shell: "{{rstlopjf.files[0].path}} -version"
       register: rstlopjve
-
+    
     - set_fact:
-        javaversion: "{{rstlopjve.stderr_lines[0]}|trim}"
+        javaversion: "{{rstlopjve.stderr_lines[0]}|trim}}"
     
     - debug:
         msg: "{{rstlopjve.stderr_lines[0]}}"
-   
