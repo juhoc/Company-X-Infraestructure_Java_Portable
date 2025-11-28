@@ -39,7 +39,8 @@
       register: rstlopjve
     
     - set_fact:
-        javaversion: "{{rstlopjve.stderr_lines[0]}|trim}}"
+        javaversion: "{{rstlopjve.stderr_lines[0]|trim}}"
     
     - debug:
         msg: "{{rstlopjve.stderr_lines[0]}}"
+   
